@@ -3,11 +3,16 @@ This script is used to send a workflow to a ComfyUI remote instance
 and download the resulting images and video without having to save the
 images and download them manually. 
 
-This script will download the images/video from the the 'preview' section 
+1) This script will download the images/video from the the 'preview' section 
 of ComfyUI, you need to use the default ComfyUI preview node:
 
 ![alt text](https://github.com/EvanGee/ComfyUI_remote_access/blob/main/assets/image.png?raw=true)
 ![alt text](https://github.com/EvanGee/ComfyUI_remote_access/blob/main/assets/video.png?raw=true)
+
+2) you need to have your workflow in an API format. To do this:
+
+   
+![alt text](https://github.com/EvanGee/ComfyUI_remote_access/blob/main/assets/export.png?raw=true)
 ```
 python3 comfy_client.py --help
 

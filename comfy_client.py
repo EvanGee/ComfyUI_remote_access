@@ -212,7 +212,7 @@ class ComfyWebAPI:
         :return: None
         """
         image_data = self.get_workflow_output(workflow_path=workflow_path)
-        self.save_images(images=image_data, image_folder=image_folder, filename_prefix=filename_prefix)
+        self.save_images(images=image_data, image_folder=output_dir, filename_prefix=filename_prefix)
 
 
 if __name__ == "__main__":
@@ -229,7 +229,7 @@ if __name__ == "__main__":
     ComfyWebAPI = ComfyWebAPI(args.server_address)
 
     if args.type == "IMAGE":
-        ComfyWebAPI.download_images(workflow_path=args.workflow_path, output_dir=args.media_path, filename_prefix=args.filename_prefix)
+        ComfyWebAPI.download_images(workflow_path=args.workflow_path, output_dir=args.media_path,  filename_prefix=args.filename_prefix)
     elif args.type == "VIDEO":
         ComfyWebAPI.download_video(workflow_path=args.workflow_path, frame_rate=args.frame_rate, output_dir=args.media_path, filename_prefix=args.filename_prefix)
 

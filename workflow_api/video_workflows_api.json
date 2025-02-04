@@ -1,0 +1,312 @@
+{
+  "1": {
+    "inputs": {
+      "noise": [
+        "14",
+        0
+      ],
+      "guider": [
+        "7",
+        0
+      ],
+      "sampler": [
+        "12",
+        0
+      ],
+      "sigmas": [
+        "11",
+        0
+      ],
+      "latent_image": [
+        "13",
+        0
+      ]
+    },
+    "class_type": "SamplerCustomAdvanced",
+    "_meta": {
+      "title": "SamplerCustomAdvanced"
+    }
+  },
+  "2": {
+    "inputs": {
+      "text": [
+        "49",
+        0
+      ],
+      "clip": [
+        "20",
+        0
+      ]
+    },
+    "class_type": "CLIPTextEncode",
+    "_meta": {
+      "title": "CLIP Text Encode (Positive Prompt)"
+    }
+  },
+  "5": {
+    "inputs": {
+      "tile_size": 128,
+      "overlap": 32,
+      "samples": [
+        "1",
+        0
+      ],
+      "vae": [
+        "21",
+        0
+      ]
+    },
+    "class_type": "VAEDecodeTiled",
+    "_meta": {
+      "title": "VAE Decode (Tiled)"
+    }
+  },
+  "6": {
+    "inputs": {
+      "guidance": 7,
+      "conditioning": [
+        "2",
+        0
+      ]
+    },
+    "class_type": "FluxGuidance",
+    "_meta": {
+      "title": "FluxGuidance"
+    }
+  },
+  "7": {
+    "inputs": {
+      "model": [
+        "10",
+        0
+      ],
+      "conditioning": [
+        "6",
+        0
+      ]
+    },
+    "class_type": "BasicGuider",
+    "_meta": {
+      "title": "BasicGuider"
+    }
+  },
+  "10": {
+    "inputs": {
+      "shift": 10,
+      "model": [
+        "19",
+        0
+      ]
+    },
+    "class_type": "ModelSamplingSD3",
+    "_meta": {
+      "title": "ModelSamplingSD3"
+    }
+  },
+  "11": {
+    "inputs": {
+      "scheduler": "simple",
+      "steps": 24,
+      "denoise": 1,
+      "model": [
+        "19",
+        0
+      ]
+    },
+    "class_type": "BasicScheduler",
+    "_meta": {
+      "title": "BasicScheduler"
+    }
+  },
+  "12": {
+    "inputs": {
+      "sampler_name": "euler"
+    },
+    "class_type": "KSamplerSelect",
+    "_meta": {
+      "title": "KSamplerSelect"
+    }
+  },
+  "13": {
+    "inputs": {
+      "width": 416,
+      "height": 720,
+      "length": 61,
+      "batch_size": 1
+    },
+    "class_type": "EmptyHunyuanLatentVideo",
+    "_meta": {
+      "title": "EmptyHunyuanLatentVideo"
+    }
+  },
+  "14": {
+    "inputs": {
+      "noise_seed": 802416378420139
+    },
+    "class_type": "RandomNoise",
+    "_meta": {
+      "title": "RandomNoise"
+    }
+  },
+  "16": {
+    "inputs": {
+      "frame_rate": 24,
+      "loop_count": 0,
+      "filename_prefix": "Hunyuan",
+      "format": "video/h264-mp4",
+      "pix_fmt": "yuv420p",
+      "crf": 19,
+      "save_metadata": false,
+      "trim_to_audio": false,
+      "pingpong": true,
+      "save_output": false,
+      "images": [
+        "5",
+        0
+      ]
+    },
+    "class_type": "VHS_VideoCombine",
+    "_meta": {
+      "title": "Video Combine 🎥🅥🅗🅢"
+    }
+  },
+  "19": {
+    "inputs": {
+      "unet_name": "hunyuan_video_720_cfgdistill_fp8_e4m3fn.safetensors",
+      "weight_dtype": "default"
+    },
+    "class_type": "UNETLoader",
+    "_meta": {
+      "title": "Load Diffusion Model"
+    }
+  },
+  "20": {
+    "inputs": {
+      "clip_name1": "clip_l.safetensors",
+      "clip_name2": "llava_llama3_fp8_scaled.safetensors",
+      "type": "hunyuan_video"
+    },
+    "class_type": "DualCLIPLoader",
+    "_meta": {
+      "title": "DualCLIPLoader"
+    }
+  },
+  "21": {
+    "inputs": {
+      "vae_name": "hunyuan_video_vae_bf16.safetensors"
+    },
+    "class_type": "VAELoader",
+    "_meta": {
+      "title": "Load VAE"
+    }
+  },
+  "22": {
+    "inputs": {
+      "video": "vid_00001 (2).mp4",
+      "force_rate": 0,
+      "force_size": "Custom",
+      "custom_width": 416,
+      "custom_height": 720,
+      "frame_load_cap": 0,
+      "skip_first_frames": 0,
+      "select_every_nth": 3,
+      "vae": [
+        "21",
+        0
+      ]
+    },
+    "class_type": "VHS_LoadVideo",
+    "_meta": {
+      "title": "Load Video (Upload) 🎥🅥🅗🅢"
+    }
+  },
+  "23": {
+    "inputs": {
+      "pixels": [
+        "25",
+        0
+      ],
+      "vae": [
+        "21",
+        0
+      ]
+    },
+    "class_type": "VAEEncode",
+    "_meta": {
+      "title": "VAE Encode"
+    }
+  },
+  "24": {
+    "inputs": {
+      "image": "unnamed.jpg",
+      "upload": "image"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "Load Image"
+    }
+  },
+  "25": {
+    "inputs": {
+      "move_range_x": 0.2,
+      "move_range_y": 0,
+      "zoom": 0.5,
+      "frame_num": 105,
+      "resize_mode": "keep_ratio",
+      "target_width": 416,
+      "target_height": 720,
+      "center_crop": false,
+      "image": [
+        "24",
+        0
+      ]
+    },
+    "class_type": "Hunyuan Video Image To Guider",
+    "_meta": {
+      "title": "Hunyuan Video Image To Guider"
+    }
+  },
+  "49": {
+    "inputs": {
+      "Text": "man running towards the camera"
+    },
+    "class_type": "DF_Text_Box",
+    "_meta": {
+      "title": "Text Box"
+    }
+  },
+  "52": {
+    "inputs": {
+      "width": 512,
+      "height": 512,
+      "num_frames": 49,
+      "steps": 30,
+      "embedded_guidance_scale": 6,
+      "flow_shift": 9,
+      "seed": 231132662175807,
+      "force_offload": true,
+      "denoise_strength": 1,
+      "scheduler": "FlowMatchDiscreteScheduler",
+      "samples": [
+        "22",
+        0
+      ]
+    },
+    "class_type": "HyVideoSampler",
+    "_meta": {
+      "title": "HunyuanVideo Sampler"
+    }
+  },
+  "53": {
+    "inputs": {
+      "images": [
+        "5",
+        0
+      ]
+    },
+    "class_type": "PreviewImage",
+    "_meta": {
+      "title": "Preview Image"
+    }
+  }
+}

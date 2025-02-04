@@ -221,7 +221,7 @@ if __name__ == "__main__":
     parser.add_argument('--server_address', type=str, default="127.0.0.1:8188", help="Address of the ComfyUI server. Defaults to 127.0.0.1:8188")
     parser.add_argument('--media_path', type=str, default=".", help="Path to where images/video will be downloaded to. Defaults to current directory.")
     parser.add_argument('--type', type=str, default="IMAGE", choices=["IMAGE", "VIDEO"], help="Type of media to download.")
-    parser.add_argument('--workflow_path', type=str, default="workflows/video_workflows_api.json", help="Path to the workflow api file. Needs to be in API format.")
+    parser.add_argument('--workflow_path', type=str, default="workflows/video_workflow_api.json", help="Path to the workflow api file. Needs to be in API format.")
     parser.add_argument('--frame_rate', type=int, default=24, help="Frame rate of the video. Defaults to 24.")
     parser.add_argument('--filename_prefix', type=str, default="output", help="Prefix for the filenames of the saved images. Defaults to 'output'.")
 
